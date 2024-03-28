@@ -8,3 +8,5 @@
 // TODO: Reference additional headers your program requires here.
 int binary_search(int* array, int size, int value);
 int find_in_rotated_array(int* a, int size, int value);
+int subarrays(int* a, int size, int k);
+int subarry_slide_window(int* a, int size, int k);
