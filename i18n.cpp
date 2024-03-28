@@ -52,7 +52,7 @@ namespace std
 
             if (f && !p && is_digit(*p))
                 return false;
-            if (*f != *p)
+            if (f && p && *f != *p)
             {
                 return false;
             }
@@ -72,7 +72,7 @@ namespace std
                 p++;
             }
         }
-        if (p && *p == 0 && *q && *q == 0)
+        if (q && p && *p == 0 && *q && *q == 0)
             return true;
         else
             return false;
