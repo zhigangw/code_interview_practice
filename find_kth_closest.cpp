@@ -21,26 +21,30 @@ void find_closest_kth(int* a, int n, int* output, int k, int x) {
 	//use two pointer to walk in two directions, compare the element they are pointing to, and select the one closest to x. move the pointer.
 	int i = middle;
 	int j = middle;
-	int c = 0;
-	while (c < k)
+	for (int c = 0; c < k; c++)
 	{
 		if (i < 0 && j >= n) {
 			//we hit the boundry
 			break;
 		}
-		else if (j < n - 1)
+		else if (j < n && i < 0)
 		{
-			output[c++] = a[j++];
+			j++;
+		}
+		else if (j >= n && i > 0) {
+			i--;
 		}
 		else {
-			output[c++] = a[i--];
+			if (abs(a[i] - x) < abs(a[j] - x)) {
+				i--;
+			}
+			else {
+				j++;
+			}
 		}
-		if (abs(a[i] - x) < abs(a[j] - x)) {
-			output[c++] = a[i--];
-		}
-		else {
-			output[c++] = a[j++];
-		}
+	}
+	for (int c = 0; c < k; c++) {
+		output[c] = a[i++];
 	}
 	return;
 }
