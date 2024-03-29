@@ -11,3 +11,5 @@ int find_in_rotated_array(int* a, int size, int value);
 int subarrays(int* a, int size, int k);
 int subarry_slide_window(int* a, int size, int k);
 void quick_sorting(int* a, int low, int high);
+int find_kth_pq(int* a, int n, int k);
+int find_kth_smallest(int* a, int n, int k);

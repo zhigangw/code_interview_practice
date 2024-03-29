@@ -1,5 +1,5 @@
 #include <queue>
-int find_kth(int* a, int n, int k) {
+int find_kth_pq(int* a, int n, int k) {
 	std::priority_queue<int> pqueue;
 	for (int i = 0; i < n; i++) {
 		if (pqueue.size() < k) {
