@@ -15,4 +15,4 @@ int max_subarray(int* a, int n) {
 		if (max_sum < accumulated) max_sum = accumulated;
 	}
 	return max_sum;
-}
+} 
