@@ -8,7 +8,7 @@ int partition(int* a, int low, int high) {
 	int p = a[high];
 	int i = low - 1;
 	for (int j = low; j < high; j++) {
-		if (a[j] < p) {
+		if (a[j] < p) /*ascending*/ {
 			i++;
 			swap(a, i, j);
 		}
