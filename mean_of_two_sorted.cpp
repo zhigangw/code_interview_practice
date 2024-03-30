@@ -19,4 +19,5 @@ int mean_of_two_sorted(int* a, int* b, int al, int bl) {
 		}
 		c--;
 	}
+	return i > j? i:j;
 }
