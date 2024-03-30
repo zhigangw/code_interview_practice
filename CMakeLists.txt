@@ -32,7 +32,7 @@ add_executable (
 	"kth.cpp" 
 	"kth_pq.cpp" 
 	"find_kth_closest.cpp"
- "GeneratePermutation.cpp" "mean_of_two_sorted.cpp" "longest_palindrom.cpp" "longest_common_substrings.cpp" "max_subarray.cpp" "merge_intervals.cpp" "nested_sum_weight.cpp")
+ "GeneratePermutation.cpp" "mean_of_two_sorted.cpp" "longest_palindrom.cpp" "longest_common_substrings.cpp" "max_subarray.cpp" "merge_intervals.cpp" "nested_sum_weight.cpp" "max_stack.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET InterviewPractice PROPERTY CXX_STANDARD 20)
