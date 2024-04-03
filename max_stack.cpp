@@ -134,7 +134,7 @@ public:
 	int peekMax() {
 		return 	this->ordered_list.peek_max();;
 	}
-	int size() {
+	int size() const {
 		return this->length;
 	}
 private:

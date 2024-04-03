@@ -27,9 +27,12 @@ public:
         if (this->token2time.contains(tokenId)) return;
         this->token2time[tokenId] = current_time + this->time_to_expire;
         if (!this->time2token.contains(this->token2time[tokenId])) {
-            this->time2token.insert(this->token2time[tokenId], {});
+            this->time2token[this->token2time[tokenId]]= { tokenId };
         }
-        this->time2token[this->token2time[tokenId]].insert(tokenId); //we should consider a list in case there are multiple token sharing same expired time. 
+        else
+        {
+            this->time2token[this->token2time[tokenId]].insert(tokenId); //we should consider a list in case there are multiple token sharing same expired time. 
+        }
     }
 
     void Renew(string tokenId, int current_time) {
@@ -40,15 +43,18 @@ public:
         }
         this->token2time[tokenId] = current_time + this->time_to_expire;
         if (!this->time2token.contains(this->token2time[tokenId])) {
-            this->time2token.insert(this->token2time[tokenId], {});
+            this->time2token[this->token2time[tokenId]] = { tokenId };
         }
-        this->time2token[this->token2time[tokenId]].insert(tokenId);
+        else
+        {
+            this->time2token[this->token2time[tokenId]].insert(tokenId);
+        }
     }
 
     int CurrentUnexpired(int current_time) {
         auto it = this->time2token.lower_bound(current_time);
         int counter = 0;
-        while (it != this->time2token.end()) counter+=it->second.size();
+        while (it != this->time2token.end()) counter+=(int)it->second.size();
         return counter;
     }
 private:
