@@ -11,7 +11,9 @@ int main()
 	//int index = find_in_rotated_array(a, sizeof(a) / sizeof(int), 2);
 	// int o[] = {0,0,0,0,0};
 	// find_closest_kth(a, sizeof(a) / sizeof(int),o, 5, 7);
-	generate_permutation(a, sizeof(a) / sizeof(int));
+	const char* parttern = "i27n";
+	const char* source = "iasfasdfasdfasdfasdfasdfsadfn";
+	find_pattern_i18n(parttern, 4, source, 29);
 	cout << a[7] << a[8] << a[9] << a[10] << a[11] << endl;
 	return 0;
 }

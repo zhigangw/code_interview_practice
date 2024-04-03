@@ -15,3 +15,4 @@ int find_kth_pq(int* a, int n, int k);
 int find_kth_smallest(int* a, int n, int k);
 void find_closest_kth(int* a, int n, int* output, int k, int x);
 bool generate_permutation(int* a, int n);
+bool find_pattern_i18n(const char* pattern, int k, const char* source, int n);
