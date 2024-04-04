@@ -23,8 +23,8 @@ int max_point(vector<pair<int, int>>& points) {
 	}
 
 	for (auto x = slope_point_map.begin(); x != slope_point_map.end();x++) {
-		if (max_points < x->first) {
-			max_points = x->first;
+		if (max_points < x->second.size()) {
+			max_points = x->second.size();
 		}
 	}
 
