@@ -56,7 +56,7 @@ add_executable (
  "word_ladder_recursive.cpp" 
  "house_robber.cpp" 
  "authentication_manager.cpp"
- "isIsomorphic.cpp" "min_types.cpp" "max_stack_sorted__map.cpp" "find_pivot.cpp" "find_k_closest_list.cpp" "valid_triangles.cpp" "celebrity.cpp" "lowest_common_ancestor_bst.cpp")
+ "isIsomorphic.cpp" "min_types.cpp" "max_stack_sorted__map.cpp" "find_pivot.cpp" "closest_k_bst_list.cpp" "valid_triangles.cpp" "celebrity.cpp" "lowest_common_ancestor_bst.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET InterviewPractice PROPERTY CXX_STANDARD 20)
