@@ -26,10 +26,12 @@ void deserialize_bst(const char* s, int start, int end, TreeNode*& root) {
 		root = nullptr;
 	}
 	else {
-		TreeNode* p = new TreeNode;
-		p->value = (s[start] - '0');
-		deserialize_bst(s, start + 1, end, p->left);
-		deserialize_bst(s, start + 2, end, p->right);
+		root = new TreeNode;
+		root->value = (s[start] - '0');
+		root->left = nullptr;
+		root->right = nullptr;
+		deserialize_bst(s, start + 1, end, root->left);
+		deserialize_bst(s, start + 2, end, root->right);
 	}
 
 }
