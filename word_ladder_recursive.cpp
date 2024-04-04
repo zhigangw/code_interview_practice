@@ -11,7 +11,16 @@ int find_ladder(string begin_word, string end_word, unordered_set<string> word_d
         for (int j = 0; j < 26; j++) {
             if (c != j + 'a') {
                 begin_word[i] = j + 'a';
-                ladder_next = max(ladder_next, find_ladder(begin_word, end_word, word_dict));
+                int sub_ladder = find_ladder(begin_word, end_word, word_dict);
+                if (sub_ladder >0)
+                {
+                    if (ladder_next == 0) {
+                        ladder_next = sub_ladder;
+                    }
+                    else {
+                        ladder_next = min(ladder_next, sub_ladder);
+                    }
+                }
             }
         }
         begin_word[i] = c;
