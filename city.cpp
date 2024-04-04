@@ -10,7 +10,7 @@ string city(map<string, int> &cities)
 {
     // caculate the range of population in the total range for each city
     // store the ranges in a set,
-    //  create a mapping between the ranages to the name of cities
+    //  create a mapping between the ranges to the name of cities
     set<int> ranges;
     vector<string> from_index_to_city;
     int prev = 0;
