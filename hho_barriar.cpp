@@ -4,51 +4,27 @@
 #include <thread>
 #include <chrono>
 #include <functional>
-const int c_num_thread = 3;
+#include <semaphore>
+#include <barrier>
 
-class Barrier {
-public:
-	Barrier() {
-		srand((unsigned int)time(NULL));
-	}
-	~Barrier() {
-	}
-	void arrival_and_wait(int index) {
-		//ASSERT(index < 3 && index >= 0)
+using namespace std;
 
-		//set the marker
-		this->arrival_markers[index]++; //atomatic operation;
-		int index_1 = (index + 1) % c_num_thread;
-		int index_2 = (index + 2) % c_num_thread;
-		//wait the marker
-		while ((this->arrival_markers[index_1] < 1 && this->arrival_markers[index_2] < 1))
-		{
-			std::this_thread::sleep_for(std::chrono::milliseconds(rand() % 100));
-		}
-
-		//consume the other two
-		this->arrival_markers[index_1]--;
-		this->arrival_markers[index_2]--;
-	}
-
-private:
-	unsigned int arrival_markers[c_num_thread] = { 0 };
-};
-
-static Barrier barrier;
+static counting_semaphore hy_sm(2);
+static counting_semaphore ox_sm(1);
+static barrier hho_barrier(3);
 
 void oxygen_thread_0(std::function<void()> releaseOxygen) {
-	barrier.arrival_and_wait(0);
+	ox_sm.acquire();
+	hho_barrier.arrive_and_wait();
 	releaseOxygen();
+	ox_sm.release();
 }
 
-void hyrogen_thread_1(std::function<void()> releaseHydrogen) {
-	barrier.arrival_and_wait(1);
+void hyrogen_thread(std::function<void()> releaseHydrogen) {
+	hy_sm.acquire();
+	hho_barrier.arrive_and_wait(1);
 	releaseHydrogen();
-}
-void hyrogen_thread_2(std::function<void()> releaseHydrogen) {
-	barrier.arrival_and_wait(2);
-	releaseHydrogen();
+	hy_sm.release();
 }
 
 void simulate(std::function<void()> releaseOxygen, std::function<void()> releaseHydrogen) {
