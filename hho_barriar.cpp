@@ -22,15 +22,15 @@ void oxygen_thread_0(std::function<void()> releaseOxygen) {
 
 void hyrogen_thread(std::function<void()> releaseHydrogen) {
 	hy_sm.acquire();
-	hho_barrier.arrive_and_wait(1);
+	hho_barrier.arrive_and_wait();
 	releaseHydrogen();
 	hy_sm.release();
 }
 
 void simulate(std::function<void()> releaseOxygen, std::function<void()> releaseHydrogen) {
 	std::thread	oxygen0(oxygen_thread_0, releaseOxygen);
-	std::thread	hydrogen1(hyrogen_thread_1, releaseHydrogen);
-	std::thread	hydrogen2(hyrogen_thread_2, releaseHydrogen);
+	std::thread	hydrogen1(hyrogen_thread, releaseHydrogen);
+	std::thread	hydrogen2(hyrogen_thread, releaseHydrogen);
 	oxygen0.join();
 	hydrogen1.join();
 	hydrogen2.join();
