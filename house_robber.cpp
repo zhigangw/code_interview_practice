@@ -14,12 +14,13 @@ int rob_dp(vector<int> nums) {
     return prev1;
 }
 
-int rob(vector<int>& nums) {
-    return rob_rs(nums, nums.size() - 1);
-}
 int rob_rs(vector<int>& nums, int i) {
     if (i < 0) {
         return 0;
     }
     return max(rob_rs(nums, i - 2) + nums[i], rob_rs(nums, i - 1));
+}
+
+int rob(vector<int>& nums) {
+    return rob_rs(nums, (int)nums.size() - 1);
 }
