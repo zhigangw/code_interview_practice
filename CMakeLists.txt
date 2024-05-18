@@ -16,23 +16,23 @@ add_executable (
 	InterviewPractice 
 	"InterviewPractice.cpp" 
 	"InterviewPractice.h" 
-	"BinarySearch.cpp"  
-	"BinarySearchRotatedArray.cpp" 
+	"binary_search.cpp"  
+	"binary_search_rotated_array.cpp" 
 	"subarray_less_than_k.cpp" 
 	"subarray_less_than_k_slide_window.cpp" 
 	"quick_sort.cpp" 
 	"city.cpp" 
 	"i18n.cpp" 
 	"kth.cpp" 
-	"lowestcommonancestor.cpp" 
+	"lowest_common_ancestor.cpp" 
 	"parentthese.cpp" 
-	"tree-to-list.cpp" 
+	"tree_to_list.cpp" 
 	"vacation.cpp" 
 	"tree_depth.cpp" 
 	"kth.cpp" 
 	"kth_pq.cpp" 
 	"find_kth_closest.cpp"
- "GeneratePermutation.cpp" 
+ "generate_permutation.cpp" 
  "mean_of_two_sorted.cpp" 
  "longest_palindrom.cpp" 
  "longest_common_substrings.cpp" 
@@ -56,7 +56,7 @@ add_executable (
  "word_ladder_recursive.cpp" 
  "house_robber.cpp" 
  "authentication_manager.cpp"
- "isIsomorphic.cpp" "min_types.cpp" "max_stack_sorted__map.cpp" "find_pivot.cpp" "closest_k_bst_list.cpp" "valid_triangles.cpp" "celebrity.cpp" "lowest_common_ancestor_bst.cpp")
+ "isIsomorphic.cpp" "min_types.cpp" "max_stack_sorted_map.cpp" "find_pivot.cpp" "closest_k_bst_list.cpp" "valid_triangles.cpp" "celebrity.cpp" "lowest_common_ancestor_bst.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET InterviewPractice PROPERTY CXX_STANDARD 20)
