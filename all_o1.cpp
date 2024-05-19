@@ -19,7 +19,7 @@ public:
 		if (!key_bucket_map.contains(key)) {
 			key_bucket_map[key] = counter_keys_list.insert(counter_keys_list.begin(), { 0,{key} });
 		}
-		auto bucket = key_bucket_map[key];
+		auto &bucket = key_bucket_map[key];
 		int counter = bucket->counter++;
 		auto next = bucket++;
 		// insert the key to the appropriate bucket
@@ -43,7 +43,7 @@ public:
 		if (!key_bucket_map.contains(key)) {
 			return;
 		}
-		auto bucket = key_bucket_map[key];
+		auto &bucket = key_bucket_map[key];
 		int counter = bucket->counter--;
 		auto prev = bucket--;
 		//first remove the key from the current bucket

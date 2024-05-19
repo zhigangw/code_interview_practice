@@ -13,3 +13,39 @@ Return the number of nodes that have the highest score.
 * caculate the score of each node by the following fomular
 * (bta[0] - bta[i]) * bta[2*i + 1] * bta[2*i + 2]
 */
+struct Node {
+	int size = 0;
+	int f_child = -1;
+	int s_child = -1;
+};
+int highest_score(int a[], int length) {
+	Node *nodes = new Node[length];
+	for (int i = 0; i < length; i++) {
+		int j = i;
+		int k = j;
+		while (j != -1) {
+			nodes[j].size++;
+			k = j;
+			j = a[j];
+			if(j!=-1){
+				if (nodes[j].f_child == -1) {
+					nodes[j].f_child = k;
+				}
+				else
+				{
+					nodes[j].s_child = k;
+				}
+			}
+		}		
+	}
+	int max_score = 0;
+	for (int l = 0; l < length; l++) {
+		int p_size = a[l] == -1 ? 1 : nodes[a[l]].size - nodes[l].size;
+		int fl_size = nodes[l].f_child == -1 ? 1 : nodes[nodes[l].f_child].size;
+		int sl_size = nodes[l].s_child == -1 ? 1: nodes[nodes[l].s_child].size;
+		int score = p_size * fl_size * sl_size;
+		max_score = score > max_score ? score : max_score;
+	}
+	delete []nodes;
+	return max_score;
+}
