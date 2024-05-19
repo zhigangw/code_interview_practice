@@ -9,7 +9,7 @@ Return the number of nodes that have the highest score.
 */
 
 /*
-* construct a binary tree array bta where the ith' left child node is in 2i + 1 and right node is in 2i + 2, and the value is the size of the (sub)tree rooted from the node.  
+* construct a binary tree array bta(using stack) where the ith' left child node is in 2i + 1 and right node is in 2i + 2, and the value is the size of the (sub)tree rooted from the node.  
 * caculate the score of each node by the following fomular
 * (bta[0] - bta[i]) * bta[2*i + 1] * bta[2*i + 2]
 */
