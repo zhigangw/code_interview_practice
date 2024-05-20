@@ -22,8 +22,8 @@ int caculate_tree_diameter(TreeNode* root, int& current_max) {
             second_diameter = diameter;
         }
     }
-    if (first_diameter + second_diameter > current_max) {
-        current_max = first_diameter + second_diameter;
+    if (first_diameter + second_diameter + 1 > current_max) {
+        current_max = first_diameter + second_diameter + 1;
     }
     return current_max;
 }

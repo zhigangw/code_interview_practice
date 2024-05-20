@@ -19,62 +19,68 @@ using namespace std;
 struct TrieNode {
 	char c = 0;
 	map<char, TrieNode*> children;
-	vector<string> best_matches;
+	bool is_word;
 };
-void insert_word_to_trie(TrieNode*& root, const string& word) {
-	auto it = word.cbegin();
-	if (root == nullptr) {
-		root = new TrieNode();
-		root->c = 0; // root doesn't contain any charactor.
-		TrieNode* node = new TrieNode();
-		node->c = *it;
-		root->children[*it] = node;
-	}
-
-	TrieNode* q = root;
-	TrieNode* p = q->children.contains(*it) ? p = q->children[*it] : nullptr;
-	while (it != word.cend())
-	{
-		if (p == nullptr) {
-			p = new TrieNode();
-			p->c = *it;
-			p->best_matches.push_back(word);
-			q->children[*it] = p;
-
+class TrieTree {
+public:
+	TrieTree(vector<string> list_of_strings) {
+		if (m_root == nullptr) {
+			m_root = new TrieNode();
+			m_root->c = 0; // root doesn't contain any charactor.
+			m_root->is_word = false;
 		}
-		q = p;
-		it++;
-		p = q->children.contains(*it) ? p = q->children[*it] : nullptr;
-	}
-}
-TrieNode* construct_trie(vector<string> list_of_strings) {
-	TrieNode* root = nullptr;
-	for (auto& word : list_of_strings) {
-		insert_word_to_trie(root, word);
-	}
-	return root;
-}
 
-void retrieve_words_from_trie(string prefix, TrieNode* root, vector<string>& list_of_words) {
-	if (root == nullptr) return;
-	auto it = prefix.cbegin();
-	TrieNode* p = root;
-	while (it != prefix.cend() && p != nullptr && p->children.contains(*it)) {
-		p = p->children[*it];
-		it++;
+		for (auto& word : list_of_strings) {
+			insert_word(word);
+		}
 	}
-	if (it != prefix.cend()) {
-		//there are still not matched chars, stop collecting words and return
-		return;
+	~TrieTree() {
+		//traverse and delete TrieNodes
 	}
-	if (p != nullptr) {
-		for (const auto& lw : p->best_matches)
+
+	void insert_word(const string& word) {
+		auto it = word.cbegin();
+		TrieNode* q = m_root;
+		TrieNode* p = q->children.contains(*it) ? p = q->children[*it] : nullptr;
+		while (it != word.cend())
 		{
-			list_of_words.push_back(lw);
+			if (p == nullptr) {
+				p = new TrieNode();
+				p->c = *it;
+				q->children[*it] = p;
+
+			}
+			q = p;
+			it++;
+			p = q->children.contains(*it) ? p = q->children[*it] : nullptr;
+		}
+		q->is_word = true;
+	}
+
+	void retrieve_words(string prefix, vector<string>& list_of_words) {
+		if (m_root == nullptr) return;
+		auto it = prefix.cbegin();
+		TrieNode* p = m_root;
+		while (it != prefix.cend() && p != nullptr && p->children.contains(*it)) {
+			p = p->children[*it];
+			it++;
+		}
+		if (it != prefix.cend()) {
+			//there are still not matched chars, stop collecting words and return
+			return;
+		}
+		collect_words(prefix, p, list_of_words);
+
+	}
+	void collect_words(string prefix, TrieNode* start, vector<string>& list_of_words) {
+		if (start == nullptr) return;
+		if (start->is_word) {
+			list_of_words.push_back(prefix + start->c);
+		}
+		for (auto& node : start->children) {
+			collect_words(prefix + start->c, node.second, list_of_words);
 		}
 	}
-	else
-	{
-		list_of_words.push_back(prefix);
-	}
-}
+private:
+	TrieNode* m_root = nullptr;
+};

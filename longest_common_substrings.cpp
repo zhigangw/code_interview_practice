@@ -38,8 +38,8 @@ int find_longest_common_substrings_dp(const char* a, int al, int ah, const char*
 				dp[i * m + j] = 1 + dp[(i - 1) * m + j - 1];
 			}
 			else {
-				int a = dp[i * m +j - 1];
-				int b = dp[(i - 1)*m + j];
+				int a = dp[i * m + j - 1];
+				int b = dp[(i - 1) * m + j];
 				dp[i * m + j] = a > b ? a : b;
 			}
 		}
