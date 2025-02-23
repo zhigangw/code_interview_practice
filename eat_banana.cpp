@@ -24,7 +24,6 @@ int eat_banana(int ba[], int length, int h) {
 		if (ba[i] > n) n = ba[i];
 	}
 	int l = 1;
-	int h = n;
 	int k = 0;
 	while (l < h) {
 		int m = (l + h) / 2;

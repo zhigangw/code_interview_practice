@@ -10,6 +10,7 @@ Return true if you can reach the last index, or false otherwise.
 * Once after a move, update g with max(g, a[i])
 * if g <=0 but you still have not reach the last element, you fail.  
 */
+#include <algorithm> 
 #include<cmath>
 using namespace std;
 bool jump_game(int a[], int length) {

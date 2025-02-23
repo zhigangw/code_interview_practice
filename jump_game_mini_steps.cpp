@@ -12,6 +12,7 @@ Return the minimum number of jumps to reach nums[n - 1]. The test cases are gene
 * Update the a[i] with farest position the jumper can reach from a[i]
 * Jump from a[0] and count the jumps until it reach the end
 */
+#include <algorithm> 
 #include <cmath>
 using namespace std;
 int jump_game_mini_steps(int a[], int length) {

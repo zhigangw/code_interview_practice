@@ -18,6 +18,7 @@ Return the order in which the CPU will process the tasks.
 */
 #include<vector>
 #include<queue>
+#include <algorithm> 
 using namespace std;
 void single_cpu(vector<pair<int, int>>& a, vector<int> output) {
 	sort(begin(a), end(a));
