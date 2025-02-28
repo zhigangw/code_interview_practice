@@ -14,7 +14,6 @@ void tree_to_list(node *root, node *&first, node *&last)
         last = nullptr;
         return;
     }
-    // if the left node is not empty, traverse the left node;
     node *l_first = nullptr, *l_last = nullptr;
     if (root && root->left)
         tree_to_list(root->left, l_first, l_last);
